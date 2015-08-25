@@ -10,26 +10,40 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery2
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require handlebars.runtime
 //= require_directory ./lib
 //= require_directory ./zviews
 //= require_directory ./zcollections
+//= require_tree .
 
-;(function( $ ){
+;(function( window ){
+	jQuery(document).ready(function( $ ){
+
 	var Router = Backbone.Router.extend({
 		routes : {
-			'' : 'home'
+			'' : 'home',
+			'new' : 'editUser',
+			'edit/:id' : 'editUser'
 		}
 	});
 
-	var router = new Router();
-	var userList = new UserList();
+	window.router = new Router();
+
+	var userList = new UserList();		
 	router.on('route:home', function(){
-		userList.render();
+		userList.render({});
+	});
+
+	var editUser = new EditUser();		
+	router.on('route:editUser', function( id ){		
+		editUser.render({id: id});
 	});
 
 	Backbone.history.start();
-})(jQuery);
+
+	});
+
+})(window);

@@ -1,0 +1,21 @@
+<a href="#/new" class="btn">New</a>
+<table class="table stripped userlist-grid">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>First name</th>
+			<th>Last name</th>
+			<th>Age</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#users}}
+		<tr>
+			<td><a href="#/edit/{{attributes.id}}">{{attributes.id}}</a></td>
+			<td>{{attributes.firstname}}</td>
+			<td>{{attributes.lastname}}</td>
+			<td>{{attributes.age}}</td>
+		</tr>
+		{{/users}}
+	</tbody>
+</table>

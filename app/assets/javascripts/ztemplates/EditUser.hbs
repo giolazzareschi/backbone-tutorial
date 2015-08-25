@@ -1,0 +1,22 @@
+<div class="form-parent">
+	<a href="#" class="btn">Back</a>
+	<form class="edit-user-form">
+		<legend>Create user</legend>
+		<label>First name</label>
+		{{#if id}}
+			<input type="hidden" name="id" value="{{id}}" />
+		{{/if}}
+		<input type="text" name="firstname" value="{{firstname}}" />
+		<label>Last name</label>
+		<input type="text" name="lastname" value="{{lastname}}" />
+		<label>Age</label>
+		<input type="text" name="age" value="{{age}}" />
+		<hr/>
+		{{#if id}}
+			<button type="submit" class="btn save btn-success">Update</button>
+			<button class="btn btn-danger destroy">Delete</button>
+		{{else}}
+			<button type="submit" class="btn save btn-primary">Create</button>
+		{{/if}}
+	</form>
+</div>

@@ -1,15 +1,16 @@
-var UserList = ViewManager.extend({
-	el : '.page',
+var UserList = Backbone.View.extend({
 
-	render : function(){		
+	tplName : 'UserList',
+
+	params : {},
+
+	render : function(){
 		var users = new Users(), me = this;
 		users.fetch({
-			success : function( users ){				
-				var tpl = new Templater(), 
-					html =  tpl.load({tplName : 'UserList', data : users.models});
-
-				me.appStageRender( html );
+			success : function( users ){
+				me.superRender({users: users.models});
 			}
 		});
 	}
+
 });
