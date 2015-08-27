@@ -22,27 +22,27 @@
 ;(function( window ){
 	jQuery(document).ready(function( $ ){
 
-	var Router = Backbone.Router.extend({
-		routes : {
-			'' : 'home',
-			'new' : 'editUser',
-			'edit/:id' : 'editUser'
-		}
-	});
+		var Router = Backbone.Router.extend({
+			routes : {
+				'' : 'home',
+				'new' : 'editUser',
+				'edit/:id' : 'editUser'
+			}
+		});
 
-	window.router = new Router();
+		window.router = new Router();
 
-	var userList = new UserList();		
-	router.on('route:home', function(){
-		userList.render({});
-	});
+		var userList = new UserList();		
+		router.on('route:home', function(){
+			userList.render({});
+		});
 
-	var editUser = new EditUser();		
-	router.on('route:editUser', function( id ){		
-		editUser.render({id: id});
-	});
+		var editUser = new EditUser();		
+		router.on('route:editUser', function( id ){		
+			editUser.render({id: id});
+		});
 
-	Backbone.history.start();
+		Backbone.history.start();
 
 	});
 

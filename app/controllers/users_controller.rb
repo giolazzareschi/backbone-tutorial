@@ -1,8 +1,15 @@
 class UsersController < ApplicationController
   
-  def index
+  def index    
+    require 'open3'
+
+    result = Open3.capture2('tsc --out /vagrant/myapp/app/assets/javascripts/ztypescript/compiled/classes /vagrant/myapp/app/assets/javascripts/ztypescript/source/classes/HelloDaddy.ts /vagrant/myapp/app/assets/javascripts/ztypescript/source/classes/zHello.ts')
+    result = Open3.capture2('tsc --out /vagrant/myapp/app/assets/javascripts/ztypescript/compiled/classes /vagrant/myapp/app/assets/javascripts/ztypescript/source/classes/zHello.ts')
+    
+    #js = File.read('/vagrant/myapp/app/assets/javascripts/ztypescript/source/classes/zHello.js')    
+
   	users = User.all
-  	render :json => users.as_json
+  	render :json => [{'firstname': ENV['TS_APP_ROOT']}]
   end
 
   def create  	
