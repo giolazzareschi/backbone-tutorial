@@ -1,0 +1,9 @@
+doctype html
+html
+	head
+		title Myapp outside
+		== stylesheet_link_tag 'outside/outside', media: 'all', 'data-turbolinks-track' => true
+		== csrf_meta_tags
+	body
+		== yield
+		== javascript_include_tag 'outside/outside', 'data-turbolinks-track' => true
